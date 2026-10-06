@@ -1,0 +1,62 @@
+[
+  {
+    "id": "cmd_heist",
+    "event": "CommandRegistrationCallback.EVENT",
+    "handler": "registerCommands",
+    "purpose": "/heist, /heist stop"
+  },
+  {
+    "id": "tick",
+    "event": "ServerTickEvents.END_SERVER_TICK",
+    "handler": "onServerTick",
+    "purpose": "Timer, countdown, banking, stun timers, drop-zone particles"
+  },
+  {
+    "id": "use_block",
+    "event": "UseBlockCallback.EVENT",
+    "handler": "onUseBlock",
+    "purpose": "Right-click loot block"
+  },
+  {
+    "id": "attack_block",
+    "event": "AttackBlockCallback.EVENT",
+    "handler": "onAttackBlock",
+    "purpose": "Punching a loot block grabs it on the first hit (no mining time)"
+  },
+  {
+    "id": "use_entity",
+    "event": "UseEntityCallback.EVENT",
+    "handler": "onUseEntity",
+    "purpose": "Right-click the gnome statue"
+  },
+  {
+    "id": "attack_entity",
+    "event": "AttackEntityCallback.EVENT",
+    "handler": "onAttackEntity",
+    "purpose": "Punch the gnome statue"
+  },
+  {
+    "id": "player_damage",
+    "event": "ServerLivingEntityEvents.ALLOW_DAMAGE",
+    "handler": "onAllowDamage",
+    "purpose": "Guard hit = caught"
+  },
+  {
+    "id": "guard_death",
+    "event": "ServerLivingEntityEvents.ALLOW_DEATH",
+    "handler": "onAllowDeath",
+    "purpose": "Guards are stunned, never killed"
+  },
+  {
+    "id": "disconnect",
+    "event": "ServerPlayConnectionEvents.DISCONNECT",
+    "handler": "onDisconnect",
+    "purpose": "Clean up when the player leaves"
+  },
+  {
+    "id": "entity_load",
+    "event": "ServerEntityEvents.ENTITY_LOAD",
+    "handler": "onEntityLoad",
+    "purpose": "Remove guards and gnome statues left over from a heist that is no longer running (world saved mid-heist)"
+  }
+]

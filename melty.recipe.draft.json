@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "mode": "installed",
+  "games": [
+    {
+      "slug": "minecraft-java",
+      "role": "primary"
+    },
+    {
+      "slug": "overwatch-2",
+      "role": "secondary"
+    },
+    {
+      "slug": "custom-burglin-gnomes",
+      "role": "secondary"
+    }
+  ],
+  "components": [
+    {
+      "id": "main",
+      "fileName": "gnome-heist-0.1.0.jar",
+      "label": "Gnome Heist (the heist mod)",
+      "kind": "main",
+      "required": true,
+      "extract": false
+    },
+    {
+      "id": "herocraft",
+      "fileName": "herocraft-0.1.0.jar",
+      "label": "HeroCraft 0.1.0 by TRS (the heroes, unchanged)",
+      "kind": "extra",
+      "required": true,
+      "extract": false
+    },
+    {
+      "id": "minecraft",
+      "fileName": "GnomeHeist-Minecraft-0.1.0.zip",
+      "label": "Its Minecraft (Prism Launcher, 1.21.1 with Fabric and Fabric API)",
+      "kind": "extra",
+      "required": true
+    }
+  ],
+  "requirements": [],
+  "mappings": [
+    {
+      "component": "minecraft",
+      "from": "",
+      "to": "{managed}"
+    },
+    {
+      "component": "main",
+      "from": "",
+      "to": "{managed}/Prism/instances/GnomeHeist/.minecraft/mods"
+    },
+    {
+      "component": "herocraft",
+      "from": "",
+      "to": "{managed}/Prism/instances/GnomeHeist/.minecraft/mods"
+    }
+  ],
+  "setup": {
+    "label": "Minecraft",
+    "launch": {
+      "kind": "exe",
+      "path": "{managed}/Prism/prismlauncher.exe",
+      "args": [
+        "--launch",
+        "GnomeHeist"
+      ]
+    },
+    "done": {
+      "file": "{managed}/Prism/instances/GnomeHeist/.minecraft/logs/latest.log",
+      "contains": "Gnome Heist loaded"
+    }
+  },
+  "launch": {
+    "kind": "exe",
+    "path": "{managed}/Prism/prismlauncher.exe",
+    "args": [
+      "--launch",
+      "GnomeHeist"
+    ]
+  },
+  "runtimeData": [
+    "{managed}/Prism"
+  ],
+  "notes": {
+    "firstLaunch": "Sign in to Minecraft when Prism asks, make a new single-player world (Superflat is best), pick a hero, then type /heist. It clears the area around you."
+  }
+}

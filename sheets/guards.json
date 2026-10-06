@@ -1,0 +1,5 @@
+[
+  {"id":"watchman","name":"Night Watchman","entity":"minecraft:husk","health":20,"speed":0.23,"followRange":24,"stunSeconds":6,"room":"hall","x":4,"y":1,"z":7,"helmet":"minecraft:leather_helmet","mainhand":"minecraft:stick"},
+  {"id":"butler","name":"The Butler","entity":"minecraft:husk","health":20,"speed":0.25,"followRange":24,"stunSeconds":6,"room":"lounge","x":14,"y":1,"z":3,"helmet":"minecraft:air","mainhand":"minecraft:air"},
+  {"id":"chief","name":"Head of Security","entity":"minecraft:vindicator","health":24,"speed":0.30,"followRange":32,"stunSeconds":4,"room":"vault","x":16,"y":1,"z":10,"helmet":"minecraft:iron_helmet","mainhand":"minecraft:iron_axe"}
+]

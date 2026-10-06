@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "gnomeheist",
+  "version": "${version}",
+  "name": "Gnome Heist",
+  "description": "A 3-minute loot run for HeroCraft: /heist builds a house, guards hunt you, and only loot you get back to the getaway van counts. A fan mashup inspired by Burglin' Gnomes and Overwatch 2; not affiliated with either.",
+  "authors": ["jonchin271"],
+  "contributors": ["HeroCraft by TRS (CC BY-NC 4.0)"],
+  "contact": {},
+  "license": "CC-BY-NC-4.0",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["gg.gnomeheist.GnomeHeist"]
+  },
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": "~1.21.1",
+    "java": ">=21",
+    "fabric-api": "*"
+  },
+  "recommends": {
+    "herocraft": "*"
+  }
+}

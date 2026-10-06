@@ -1,0 +1,6 @@
+[
+  {"id":"hall","name":"Front Hall","x1":0,"z1":0,"x2":8,"z2":14,"floor":"minecraft:spruce_planks","wall":"minecraft:stripped_spruce_log","doorways":[[0,7],[8,4],[8,11]]},
+  {"id":"lounge","name":"Lounge","x1":8,"z1":0,"x2":20,"z2":7,"floor":"minecraft:oak_planks","wall":"minecraft:white_terracotta","doorways":[[8,4],[11,7]]},
+  {"id":"study","name":"Study","x1":8,"z1":7,"x2":14,"z2":14,"floor":"minecraft:dark_oak_planks","wall":"minecraft:bookshelf","doorways":[[8,11],[11,7],[14,10]]},
+  {"id":"vault","name":"Vault","x1":14,"z1":7,"x2":20,"z2":14,"floor":"minecraft:polished_andesite","wall":"minecraft:iron_block","doorways":[[14,10]]}
+]

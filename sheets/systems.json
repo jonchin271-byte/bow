@@ -1,0 +1,108 @@
+[
+  {
+    "id": "start",
+    "name": "Start heist",
+    "trigger": "/heist",
+    "effect": "Build the house and van next to the player, place loot, spawn guards, put the player at the start point, count down, start the timer.",
+    "feedback": "3-2-1 title countdown, then 'GO!'",
+    "params": {
+      "countdownSeconds": 3
+    },
+    "hooks": [
+      "cmd_heist",
+      "tick"
+    ]
+  },
+  {
+    "id": "timer",
+    "name": "Heist timer",
+    "trigger": "Every server tick while a heist runs",
+    "effect": "Count down; at zero the heist ends.",
+    "feedback": "Boss bar that drains; turns red in the last 30 s with a ticking sound.",
+    "params": {
+      "seconds": 180,
+      "warnAtSeconds": 30
+    },
+    "hooks": [
+      "tick"
+    ]
+  },
+  {
+    "id": "grab",
+    "name": "Grab loot",
+    "trigger": "Right-click or punch a loot block or the gnome statue",
+    "effect": "Remove it from the house and add it to what the player carries, up to the carry limit.",
+    "feedback": "Pickup sound; action bar shows carried items and value.",
+    "params": {
+      "maxCarried": 3
+    },
+    "hooks": [
+      "use_block",
+      "attack_block",
+      "use_entity",
+      "attack_entity"
+    ]
+  },
+  {
+    "id": "bank",
+    "name": "Bank at the van",
+    "trigger": "Player stands in the drop zone carrying loot",
+    "effect": "Move carried loot to the banked score.",
+    "feedback": "Chime and 'Banked +N' title.",
+    "params": {
+      "zone": "drop_zone"
+    },
+    "hooks": [
+      "tick"
+    ]
+  },
+  {
+    "id": "caught",
+    "name": "Caught by a guard",
+    "trigger": "A guard lands a hit on the player",
+    "effect": "Cancel the damage; carried loot is lost; player goes back to the start point; every guard returns to its post and holds still for graceTicks, so nobody camps the van.",
+    "feedback": "'CAUGHT!' title, lost value in chat.",
+    "params": {
+      "graceTicks": 100
+    },
+    "hooks": [
+      "player_damage"
+    ]
+  },
+  {
+    "id": "stun",
+    "name": "Stun a guard",
+    "trigger": "A guard would die (hero weapons, punches)",
+    "effect": "Cancel the death, heal it, freeze it for the guard's stunSeconds.",
+    "feedback": "Guard's name shows 'stunned'; it stops moving.",
+    "params": {},
+    "hooks": [
+      "guard_death",
+      "tick"
+    ]
+  },
+  {
+    "id": "end",
+    "name": "End and score",
+    "trigger": "Timer reaches zero, or /heist stop",
+    "effect": "Carried loot is lost; guards and leftover loot are removed; the score card is shown.",
+    "feedback": "Title with banked total; chat lists each banked item and the best possible total.",
+    "params": {},
+    "hooks": [
+      "tick",
+      "cmd_heist"
+    ]
+  },
+  {
+    "id": "cleanup",
+    "name": "Clean up on leave",
+    "trigger": "Player leaves the world, or a saved world reloads with leftovers",
+    "effect": "Remove guards and the gnome statue and forget the heist.",
+    "feedback": "None (player is gone).",
+    "params": {},
+    "hooks": [
+      "disconnect",
+      "entity_load"
+    ]
+  }
+]

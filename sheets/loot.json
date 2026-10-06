@@ -1,0 +1,12 @@
+[
+  {"id":"cake","name":"Birthday Cake","points":20,"kind":"block","block":"minecraft:cake","room":"hall","x":2,"y":1,"z":2},
+  {"id":"lantern","name":"Silver Lantern","points":40,"kind":"block","block":"minecraft:lantern","room":"hall","x":6,"y":1,"z":12},
+  {"id":"pans","name":"Copper Pans","points":30,"kind":"block","block":"minecraft:copper_block","room":"lounge","x":10,"y":1,"z":2},
+  {"id":"record","name":"Rare Record Player","points":60,"kind":"block","block":"minecraft:jukebox","room":"lounge","x":18,"y":1,"z":2},
+  {"id":"vase","name":"Antique Vase","points":80,"kind":"block","block":"minecraft:decorated_pot","room":"lounge","x":14,"y":1,"z":5},
+  {"id":"books","name":"First Editions","points":50,"kind":"block","block":"minecraft:chiseled_bookshelf","room":"study","x":10,"y":1,"z":12},
+  {"id":"chemset","name":"Grandpa's Chemistry Set","points":70,"kind":"block","block":"minecraft:brewing_stand","room":"study","x":12,"y":1,"z":9},
+  {"id":"jewels","name":"Jewel Box","points":120,"kind":"block","block":"minecraft:emerald_block","room":"vault","x":16,"y":1,"z":12},
+  {"id":"gold","name":"Gold Bars","points":150,"kind":"block","block":"minecraft:gold_block","room":"vault","x":18,"y":1,"z":9},
+  {"id":"gnome","name":"Golden Garden Gnome","points":500,"kind":"statue","block":"minecraft:gold_block","room":"vault","x":18,"y":1,"z":12}
+]

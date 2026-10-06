@@ -1,0 +1,9 @@
+{
+  "_about": "Column rules for every sheet. type: str|int|num|list|obj. ref: <sheet>.id means the value must be a row id there. block/entity/item: a vanilla Minecraft 1.21.1 id.",
+  "rooms":  {"id":"str","name":"str","x1":"int","z1":"int","x2":"int","z2":"int","floor":"block","wall":"block","doorways":"list"},
+  "places": {"id":"str","name":"str","x1":"int","y1":"int","z1":"int","x2":"int","y2":"int","z2":"int","purpose":"str"},
+  "loot":   {"id":"str","name":"str","points":"int","kind":"str","block":"block","room":"ref:rooms.id","x":"int","y":"int","z":"int"},
+  "guards": {"id":"str","name":"str","entity":"entity","health":"num","speed":"num","followRange":"num","stunSeconds":"int","room":"ref:rooms.id","x":"int","y":"int","z":"int","helmet":"item","mainhand":"item"},
+  "systems":{"id":"str","name":"str","trigger":"str","effect":"str","feedback":"str","params":"obj","hooks":"list:hooks.id"},
+  "hooks":  {"id":"str","event":"str","handler":"str","purpose":"str"}
+}

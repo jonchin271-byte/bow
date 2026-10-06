@@ -1,0 +1,44 @@
+plugins {
+    id 'fabric-loom' version '1.18.2'
+}
+
+version = project.mod_version
+group = 'gg.gnomeheist'
+base { archivesName = 'gnome-heist' }
+
+repositories {}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings loom.officialMojangMappings()
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+    // HeroCraft (by TRS, CC BY-NC 4.0) runs next to this mod in dev runs when its jar is in libs/.
+    // It is not compiled against or shipped in this jar; the Melty release ships it as its own file.
+    if (file('libs/herocraft-0.1.0.jar').exists()) {
+        modLocalRuntime files('libs/herocraft-0.1.0.jar')
+    }
+}
+
+processResources {
+    inputs.property 'version', project.version
+    filesMatching('fabric.mod.json') { expand 'version': project.version }
+}
+
+java {
+    toolchain { languageVersion = JavaLanguageVersion.of(21) }
+    withSourcesJar()
+}
+
+tasks.withType(JavaCompile).configureEach { it.options.release = 21 }
+
+jar { from('../LICENSE') { rename { "LICENSE_gnomeheist" } } }
+
+loom {
+    runs {
+        client {
+            property 'gnomeheist.selftest', System.getProperty('gnomeheist.selftest', 'false')
+            programArgs '--quickPlaySingleplayer', 'heisttest', '--width', '1280', '--height', '720'
+        }
+    }
+}

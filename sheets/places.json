@@ -1,0 +1,5 @@
+[
+  {"id":"van","name":"Getaway Van","x1":-14,"y1":0,"z1":5,"x2":-8,"y2":3,"z2":9,"purpose":"Block-built van parked west of the front door; its back doors face the house."},
+  {"id":"drop_zone","name":"Van Drop Zone","x1":-7,"y1":0,"z1":5,"x2":-5,"y2":3,"z2":9,"purpose":"Stand here with loot to bank it. Marked with particles."},
+  {"id":"start","name":"Start Point","x1":-6,"y1":0,"z1":7,"x2":-6,"y2":0,"z2":7,"purpose":"Where the player is put at the start and after being caught."}
+]
