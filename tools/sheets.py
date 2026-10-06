@@ -182,7 +182,8 @@ def gen(data):
         out.append(f"    public static final Sys SYSTEM_{s['id'].upper()} = new Sys({jstr(s['id'])}, {jstr(s['name'])}, Map.of({params}));")
     out += ["", "    public static Place place(String id) {",
             "        return PLACES.stream().filter(p -> p.id().equals(id)).findFirst().orElseThrow();", "    }",
-            "", "    public static int intParam(Sys s, String key) {", "        return ((Number) s.params().get(key)).intValue();", "    }", "}", ""]
+            "", "    public static int intParam(Sys s, String key) {", "        return ((Number) s.params().get(key)).intValue();", "    }",
+            "", "    public static double numParam(Sys s, String key) {", "        return ((Number) s.params().get(key)).doubleValue();", "    }", "}", ""]
     os.makedirs(os.path.dirname(GEN_OUT), exist_ok=True)
     open(GEN_OUT, "w").write("\n".join(out))
 

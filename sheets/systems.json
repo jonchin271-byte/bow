@@ -30,13 +30,15 @@
   {
     "id": "grab",
     "name": "Grab loot",
-    "trigger": "Right-click or punch a loot block or the gnome statue",
-    "effect": "Remove it from the house and add it to what the player carries, up to the carry limit.",
+    "trigger": "Crouch (Shift) right next to a loot block or the gnome statue. HeroCraft owns both mouse buttons while a hero weapon is held, so clicking only works with an empty hand.",
+    "effect": "Take the nearest loot within reach out of the house and add it to what the player carries, up to the carry limit. One grab per crouch.",
     "feedback": "Pickup sound; action bar shows carried items and value.",
     "params": {
-      "maxCarried": 3
+      "maxCarried": 3,
+      "grabReach": 2.0
     },
     "hooks": [
+      "tick",
       "use_block",
       "attack_block",
       "use_entity",

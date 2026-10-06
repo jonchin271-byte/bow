@@ -18,7 +18,7 @@
   "components": [
     {
       "id": "main",
-      "fileName": "gnome-heist-0.1.0.jar",
+      "fileName": "gnome-heist-0.1.1.jar",
       "label": "Gnome Heist (the heist mod)",
       "kind": "main",
       "required": true,
@@ -34,7 +34,7 @@
     },
     {
       "id": "minecraft",
-      "fileName": "GnomeHeist-Minecraft-0.1.0.zip",
+      "fileName": "GnomeHeist-Minecraft-0.1.1.zip",
       "label": "Its Minecraft (Prism Launcher, 1.21.1 with Fabric and Fabric API)",
       "kind": "extra",
       "required": true
@@ -85,6 +85,6 @@
     "{managed}/Prism"
   ],
   "notes": {
-    "firstLaunch": "Sign in to Minecraft when Prism asks, make a new single-player world (Superflat is best), pick a hero, then type /heist. It clears the area around you."
+    "firstLaunch": "Sign in to Minecraft when Prism asks, make a new Superflat world, pick a hero, type /heist. Crouch (Shift) next to loot to grab it."
   }
 }

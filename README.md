@@ -10,7 +10,8 @@ counts.
 ## What you get
 - **`/heist`** builds a four-room house (hall, lounge, study, vault) and a getaway van next to you.
 - **10 pieces of loot** worth 20 to 500 points. The jackpot is the **Golden Garden Gnome** in the vault.
-- **Grab** loot by right-clicking or punching it. You can carry **3 things at once**.
+- **Grab** loot by crouching (**Shift**) right next to it. You can carry **3 things at once**.
+  HeroCraft uses both mouse buttons for hero weapons, so clicks only grab when your hand is empty.
 - **Bank** loot by standing on the yellow drop zone behind the van.
 - **3 guards**: the Night Watchman, the Butler and the Head of Security. If one hits you, you're
   **caught**: you lose what you're carrying and go back to the van. Banked loot is safe.

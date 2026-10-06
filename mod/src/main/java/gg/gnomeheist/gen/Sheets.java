@@ -47,7 +47,7 @@ public final class Sheets {
 
     public static final Sys SYSTEM_START = new Sys("start", "Start heist", Map.of("countdownSeconds", 3));
     public static final Sys SYSTEM_TIMER = new Sys("timer", "Heist timer", Map.of("seconds", 180, "warnAtSeconds", 30));
-    public static final Sys SYSTEM_GRAB = new Sys("grab", "Grab loot", Map.of("maxCarried", 3));
+    public static final Sys SYSTEM_GRAB = new Sys("grab", "Grab loot", Map.of("maxCarried", 3, "grabReach", 2.0));
     public static final Sys SYSTEM_BANK = new Sys("bank", "Bank at the van", Map.of("zone", "drop_zone"));
     public static final Sys SYSTEM_CAUGHT = new Sys("caught", "Caught by a guard", Map.of("graceTicks", 100));
     public static final Sys SYSTEM_STUN = new Sys("stun", "Stun a guard", Map.of());
@@ -60,5 +60,9 @@ public final class Sheets {
 
     public static int intParam(Sys s, String key) {
         return ((Number) s.params().get(key)).intValue();
+    }
+
+    public static double numParam(Sys s, String key) {
+        return ((Number) s.params().get(key)).doubleValue();
     }
 }

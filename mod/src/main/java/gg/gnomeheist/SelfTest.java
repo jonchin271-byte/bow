@@ -91,11 +91,18 @@ final class SelfTest {
             look(p, h, 1.5, 1, 7.5, 6, 1.5, 7.5);
         }));
         steps.add(new Step(t += 20, () -> shot("hall")));
-        steps.add(new Step(t += 20, () -> {
+        // Grab with a real key press, like a player holding a hero weapon (HeroCraft owns the mouse).
+        steps.add(new Step(t += 10, () -> {
+            look(p, heist(p), 3.6, 1, 2.5, 2.5, 0.5, 2.5);
+            GnomeHeist.LOG.info("SELFTEST CROUCH");
+        }));
+        steps.add(new Step(t += 40, () -> {
+            look(p, heist(p), 6.5, 1, 11.4, 6.5, 0.5, 12.5);
+            GnomeHeist.LOG.info("SELFTEST CROUCH");
+        }));
+        steps.add(new Step(t += 40, () -> {
             Heist h = heist(p);
-            grab(p, h, "cake");
-            grab(p, h, "lantern");
-            check(h.carried.size() == 2 && Heist.total(h.carried) == 60, "grabbed cake + lantern = 60");
+            check(h.carried.size() == 2 && Heist.total(h.carried) == 60, "crouch-grabbed cake + lantern = 60 (real Shift key)");
         }));
         steps.add(new Step(t += 20, () -> {
             Heist h = heist(p);

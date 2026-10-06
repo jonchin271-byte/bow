@@ -9,7 +9,7 @@
     "id": "tick",
     "event": "ServerTickEvents.END_SERVER_TICK",
     "handler": "onServerTick",
-    "purpose": "Timer, countdown, banking, stun timers, drop-zone particles"
+    "purpose": "Timer, countdown, crouch-to-grab, banking, stun timers, drop-zone particles"
   },
   {
     "id": "use_block",

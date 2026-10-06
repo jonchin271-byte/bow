@@ -53,6 +53,7 @@ public final class Heist {
     int ticksLeft;
     int graceTicks;
     int age;
+    boolean wasCrouching;
     final Map<BlockPos, Sheets.Loot> lootBlocks = new HashMap<>();
     final Map<UUID, Sheets.Loot> lootStatues = new HashMap<>();
     final Map<UUID, Sheets.Guard> guards = new LinkedHashMap<>();
@@ -224,6 +225,11 @@ public final class Heist {
             return true;
         });
 
+        // grab: one grab each time the player crouches next to loot (HeroCraft owns the mouse buttons)
+        boolean crouching = player.isShiftKeyDown();
+        if (crouching && !wasCrouching) tryGrabNearest(player);
+        wasCrouching = crouching;
+
         // bank: carried loot counts once the player stands in the drop zone
         Sheets.Place zone = Sheets.place((String) Sheets.SYSTEM_BANK.params().get("zone"));
         AABB zoneBox = new AABB(Vec(at(zone.x1(), zone.y1(), zone.z1())), Vec(at(zone.x2() + 1, zone.y2() + 1, zone.z2() + 1)));
@@ -256,7 +262,7 @@ public final class Heist {
     void actionBar(ServerPlayer player) {
         int max = Sheets.intParam(Sheets.SYSTEM_GRAB, "maxCarried");
         String text = carried.isEmpty()
-            ? "Hands empty: grab loot (right-click or punch it)"
+            ? "Hands empty: crouch (Shift) next to loot to grab it"
             : "Carrying " + String.join(", ", carried.stream().map(Sheets.Loot::name).toList())
                 + " (" + total(carried) + ")  " + (carried.size() >= max ? "HANDS FULL: get to the van!" : "→ bank at the van");
         player.displayClientMessage(Component.literal(text).withStyle(carried.isEmpty() ? ChatFormatting.GRAY : ChatFormatting.GOLD), true);
@@ -283,6 +289,30 @@ public final class Heist {
         e.discard();
         grabbed(player, l);
         return true;
+    }
+
+    /** Grab the closest loot block or statue within grabReach of the player's feet or eyes. */
+    boolean tryGrabNearest(ServerPlayer player) {
+        double reach = Sheets.numParam(Sheets.SYSTEM_GRAB, "grabReach");
+        double best = Double.MAX_VALUE;
+        BlockPos bestBlock = null;
+        Entity bestStatue = null;
+        for (BlockPos pos : lootBlocks.keySet()) {
+            double d = distanceTo(player, pos.getCenter());
+            if (d < best) { best = d; bestBlock = pos; bestStatue = null; }
+        }
+        for (UUID id : lootStatues.keySet()) {
+            Entity e = level.getEntity(id);
+            if (e == null) continue;
+            double d = distanceTo(player, e.getBoundingBox().getCenter());
+            if (d < best) { best = d; bestStatue = e; bestBlock = null; }
+        }
+        if (best > reach + 0.5) return false;
+        return bestStatue != null ? tryGrabStatue(player, bestStatue) : tryGrabBlock(player, bestBlock);
+    }
+
+    private static double distanceTo(ServerPlayer player, net.minecraft.world.phys.Vec3 target) {
+        return Math.min(player.position().add(0, 0.5, 0).distanceTo(target), player.getEyePosition().distanceTo(target));
     }
 
     private boolean roomInHands(ServerPlayer player) {
